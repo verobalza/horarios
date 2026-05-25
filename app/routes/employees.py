@@ -3,9 +3,14 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.schemas.employee import EmployeeCreate, EmployeeUpdate, EmployeeRead
 from app.services.employee_service import EmployeeService
+from app.auth import get_current_user
 from typing import List
 
-router = APIRouter(prefix="/employees", tags=["employees"])
+router = APIRouter(
+    prefix="/employees",
+    tags=["employees"],
+    dependencies=[Depends(get_current_user)]
+)
 
 
 @router.post("/", response_model=EmployeeRead)

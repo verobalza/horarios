@@ -3,9 +3,14 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.services.shift_service import ShiftService
 from app.schemas.shift import ShiftRead
+from app.auth import get_current_user
 from typing import List
 
-router = APIRouter(prefix="/shifts", tags=["shifts"])
+router = APIRouter(
+    prefix="/shifts",
+    tags=["shifts"],
+    dependencies=[Depends(get_current_user)]
+)
 
 
 @router.get("/", response_model=List[ShiftRead])

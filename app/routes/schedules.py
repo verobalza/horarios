@@ -4,9 +4,14 @@ from app.database import get_db
 from app.schemas.schedule import ScheduleCreate, ScheduleRead
 from app.services.schedule_service import ScheduleService
 from app.services.shift_service import ShiftService
+from app.auth import get_current_user
 from typing import List
 
-router = APIRouter(prefix="/schedules", tags=["schedules"])
+router = APIRouter(
+    prefix="/schedules",
+    tags=["schedules"],
+    dependencies=[Depends(get_current_user)]
+)
 
 
 @router.post("/", response_model=ScheduleRead)
