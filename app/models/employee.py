@@ -13,6 +13,9 @@ class Employee(Base):
     preferred_shifts = Column(JSON, default=[])  # [M1, M3, T1, T3]
     fixed_days_off = Column(JSON, default=[])  # días del mes
     requested_days_off = Column(JSON, default=[])  # días solicitados
+    occupied_type = Column(String(50), default="Ninguno")  # Provincial, Guardia, etc.
+    vacation_start = Column(String(10), default="")  # fecha inicio de vacaciones YYYY-MM-DD
+    vacation_end = Column(String(10), default="")  # fecha fin de vacaciones YYYY-MM-DD
     weekly_availability = Column(String(10), default="L-D")  # L-V o L-D
     vacation_days = Column(JSON, default=[])  # días de vacaciones
     holiday_days = Column(JSON, default=[])  # festivos

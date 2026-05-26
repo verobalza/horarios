@@ -9,6 +9,9 @@ class EmployeeBase(BaseModel):
     preferred_shifts: List[str] = []
     fixed_days_off: List[int] = []
     requested_days_off: List[int] = []
+    occupied_type: str = "Ninguno"
+    vacation_start: str = ""
+    vacation_end: str = ""
     weekly_availability: str = "L-D"
     vacation_days: List[int] = []
     holiday_days: List[int] = []
@@ -24,6 +27,9 @@ class EmployeeUpdate(BaseModel):
     preferred_shifts: Optional[List[str]] = None
     fixed_days_off: Optional[List[int]] = None
     requested_days_off: Optional[List[int]] = None
+    occupied_type: Optional[str] = None
+    vacation_start: Optional[str] = None
+    vacation_end: Optional[str] = None
     weekly_availability: Optional[str] = None
     vacation_days: Optional[List[int]] = None
     holiday_days: Optional[List[int]] = None
